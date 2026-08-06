@@ -30,16 +30,8 @@ body {
     max-width: 800px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-
-.badge {
-    background-color: #e5e7eb;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
 }
 
 .main-container {
