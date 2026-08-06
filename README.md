@@ -21,3 +21,6 @@ The Property Listings department previously relied on manual paper systems and E
 ## 📁 Architectural Documentation
 - [Database ERD Design](./docs/ERD_Design.md)
 - [API Contracts](./docs/API_Contracts.md)
+
+## 👨‍💻 Author
+- **Vandana Mahant**
