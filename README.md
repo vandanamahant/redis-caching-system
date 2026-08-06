@@ -1,4 +1,4 @@
-# Redis Caching System - Property Listings (Ticket: ENG-134560)
+# Redis Caching System - Property Listings
 
 ## 📌 Project Overview
 The Property Listings department previously relied on manual paper systems and Excel sheets to manage Redis caching, causing massive data loss and operational slowdowns. This project implements a secure, high-performance digital Redis Caching interface designed for floor staff.
