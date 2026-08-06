@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redis Caching Interface - Property Listings</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1>Redis Caching Management</h1>
+            <span class="badge">Ticket: ENG-134560</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="control-panel">
+            <div class="search-box">
+                <label for="cacheInput" class="sr-only">Cache Key Lookup</label>
+                <input type="text" id="cacheInput" placeholder="Enter cache key (e.g., prop:123)..." aria-label="Cache Key Lookup">
+                <button id="searchBtn" aria-label="Search Cache">Lookup</button>
+            </div>
+            <div id="loadingIndicator" class="loading hidden" aria-live="polite">Loading cache data...</div>
+        </section>
+
+        <section class="results-section">
+            <div id="resultContainer" class="card hidden">
+                <h3>Cache Entry Details</h3>
+                <div id="resultContent"></div>
+            </div>
+            <div id="emptyState" class="empty-state hidden">
+                <p>No data found</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const searchBtn = document.getElementById('searchBtn');
+        const cacheInput = document.getElementById('cacheInput');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultContent = document.getElementById('resultContent');
+        const emptyState = document.getElementById('emptyState');
+
+        searchBtn.addEventListener('click', () => {
+            const rawInput = cacheInput.value.trim();
+            
+            if (!rawInput) {
+                cacheInput.classList.add('error-border');
+                return;
+            }
+            cacheInput.classList.remove('error-border');
+
+            loadingIndicator.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            emptyState.classList.add('hidden');
+
+            setTimeout(() => {
+                loadingIndicator.classList.add('hidden');
+
+                if (rawInput === 'prop:123') {
+                    resultContent.innerHTML = `
+                        <p><strong>Key:</strong> prop:123</p>
+                        <p><strong>Value:</strong> Downtown Luxury Apartment</p>
+                        <p><strong>TTL:</strong> 3600s</p>
+                    `;
+                    resultContainer.classList.remove('hidden');
+                } else {
+                    emptyState.classList.remove('hidden');
+                }
+
+                console.log('[Analytics] User interacted with Redis Caching');
+            }, 800);
+        });
+    </script>
+</body>
+</html>
